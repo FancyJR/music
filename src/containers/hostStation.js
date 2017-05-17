@@ -13,9 +13,9 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-  
+
     this.state = {
-      index: 0,
+      index: 2,
       page:1
     };
 
@@ -54,8 +54,8 @@ class App extends Component {
     // console.log('offsetHeight',this.refs.container.offsetHeight)
     // console.log('scrollHeight',this.refs.container.scrollHeight)
     // console.log('clientHeight',this.refs.container.clientHeight)
-    // console.log('scrollTop',this.refs.container.scrollTop)    
-    
+    // console.log('scrollTop',this.refs.container.scrollTop)
+
     if( this.refs.container.scrollTop + this.refs.container.clientHeight ===  this.refs.container.scrollHeight){
       // 这里有问题
       dispatch(homeAPI(data,this.state.page+1))
@@ -76,7 +76,7 @@ class App extends Component {
       <div className='root'>
 
         <div className="header" style={{backgroundColor:'#ce3d3e',color:'#fff',display:'flex',justifyContent: 'space-between',padding:'0 1rem'}}>
-          
+
           <div onClick={()=>this.back()} style={{display:'flex',flex:1}}></div>
           <div style={{display:'flex',flex:10,justifyContent: 'center'}} onClick={()=>this.gotoSearch()}>
             <Search />
@@ -88,20 +88,17 @@ class App extends Component {
 
         <div className='homeTab'>
             <div className='homeTab1'>
-              <div style={index === 0 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(0)}>个性推荐</div>
+              <Link to = "/home" style={index === 0 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(0)}>个性推荐</Link>
               <Link to = "/playlist" style={index === 1 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(1)}>歌单</Link>
               <div style={index === 2 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(2)}>主播电台</div>
-              <div style={index === 3 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(3)}>排行榜</div>
+              <Link to="billBoard" style={index === 3 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(3)}>排行榜</Link>
             </div>
             <div className="highlight" style={{transform:`translateX(${index}00%)`}}></div>
         </div>
-        
+
 
         <div className="container" onScroll={()=>this.scroll() } ref='container'>
-          <Slider data={data.banner} />
-                <RecommendList data={data.recommendMusics} scrollTop={()=>this.scrollTopHandler()}/>
-          
-
+             主播电台
         </div>
 
         <Nav/>

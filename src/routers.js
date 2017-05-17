@@ -80,13 +80,34 @@ const Routes = {
 			})
 		   }
 		},
+        { path: 'playList',
+            getComponent (nextState, cb) {
+                require.ensure([], (require)=>{
+                    cb(null, require('./containers/playList').default)
+                })
+            }
+        },
+        { path: 'hostStation',
+            getComponent (nextState, cb) {
+                require.ensure([], (require)=>{
+                    cb(null, require('./containers/hostStation').default)
+                })
+            }
+        },
+        { path: 'billBoard',
+            getComponent (nextState, cb) {
+                require.ensure([], (require)=>{
+                    cb(null, require('./containers/billBoard').default)
+                })
+            }
+        },
 		{ path: '*',// 找不到页面跳转到首页
 		  getComponent (nextState, cb) {
 			require.ensure([], (require)=>{
 				 cb(null, require('./containers/pageNotFound').default)
 			})
 		   }
-		}
+		},
 	]
 };
 

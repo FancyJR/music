@@ -15,7 +15,7 @@ class App extends Component {
     super(props);
   
     this.state = {
-      index: 0,
+      index: 3,
       page:1
     };
 
@@ -88,10 +88,10 @@ class App extends Component {
 
         <div className='homeTab'>
             <div className='homeTab1'>
-              <div style={index === 0 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(0)}>个性推荐</div>
+              <Link to = "/home" style={index === 0 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(0)}>个性推荐</Link>
               <Link to = "/playlist" style={index === 1 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(1)}>歌单</Link>
               <Link to = "/hostStation" style={index === 2 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(2)}>主播电台</Link>
-              <Link style={index === 3 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(3)}>排行榜</Link>
+              <div style={index === 3 ? { color: '#ce3d3e' } :{}} onClick={this.handleChangeTabs(3)}>排行榜</div>
             </div>
             <div className="highlight" style={{transform:`translateX(${index}00%)`}}></div>
         </div>
@@ -99,8 +99,6 @@ class App extends Component {
 
         <div className="container" onScroll={()=>this.scroll() } ref='container'>
           <Slider data={data.banner} />
-                <RecommendList data={data.recommendMusics} scrollTop={()=>this.scrollTopHandler()}/>
-          
 
         </div>
 
